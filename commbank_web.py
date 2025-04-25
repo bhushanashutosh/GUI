@@ -1,8 +1,13 @@
+# Install the necessary dependencies
+!pip install streamlit pyngrok
+
 # Rewriting the Tkinter GUI as a Streamlit web app
 import streamlit as st
 import random
 from datetime import datetime
+from pyngrok import ngrok
 
+# Set up the Streamlit page
 st.set_page_config(page_title="CommBank Pay", layout="centered")
 st.title("\U0001F4B3 CommBank Pay")
 
@@ -44,3 +49,12 @@ if st.button("Pay"):
             st.markdown(f"**Date:** {datetime.now().strftime('%d %b %Y at %I:%M %p')}")
         except ValueError:
             st.error("Please enter a valid amount")
+
+# Run your Streamlit app
+!streamlit run /content/commbank_web.py &
+
+# Set up a tunnel to the Streamlit app
+public_url = ngrok.connect(port='8501')
+
+# Display the public URL
+print(f"Streamlit app is running at: {public_url}")
