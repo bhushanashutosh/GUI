@@ -1,8 +1,6 @@
 # Install the necessary dependencies
 !pip install streamlit pyngrok
 
-# Download your GitHub file (replace with your raw URL)
-!wget https://raw.githubusercontent.com/your-username/your-repo-name/main/commbank_web.py
 
 # Import the necessary libraries
 import streamlit as st
